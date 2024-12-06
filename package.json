@@ -1,0 +1,16 @@
+{
+  "name": "testing",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "@types/bun": "latest",
+    "playwright": "^1.49.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "test": "playwright test"
+  }
+}
