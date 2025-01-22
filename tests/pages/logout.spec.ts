@@ -3,15 +3,13 @@ import { useAuthorization } from "../utils/authorization"
 import { baseURL } from "../../playwright.config"
 
 useAuthorization()
-test("Testing new diagnosis", async ({ page }) => {
-  await page.goto(`${baseURL}/analysis`)
-  await page.getByRole("link", { name: "LP診断管理" }).click()
-  await page
-    .locator("a")
-    .filter({ hasText: "新しく診断管理するURLを指定" })
-    .click()
-  await page.getByRole("button", { name: "接続テストをする" }).click()
-  await page.getByText("指定のURL").waitFor()
+test("Testing logout", async ({ page }) => {
+  await page.locator('[id="headlessui-menu-button-\\:r1\\:"]').click()
+  await page.getByRole("menuitem", { name: "ログアウト" }).click()
 
+  // wait page /login load done
+  await page.waitForURL(/.*login/, { waitUntil: "domcontentloaded" })
+
+  await expect(page).toHaveURL(/.*\/login/)
   expect(1).toBe(1)
 })
