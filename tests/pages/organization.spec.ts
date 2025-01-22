@@ -23,17 +23,6 @@ test("Testing project settings", async ({ page }) => {
   expect(1).toBe(1)
 })
 
-test("Testing 分析対象ページ設定 function", async ({ page }) => {
-  await expect(page).toHaveURL(/.*statistics/)
-
-  await page.getByRole("link", { name: "プロジェクト設定" }).click()
-  await page.getByRole("link", { name: "分析対象ページ設定" }).click()
-  await page.getByRole("button", { name: "保存する" }).click()
-  await page.getByText("保存しました").waitFor()
-
-  expect(1).toBe(1)
-})
-
 test("Testing ユーザー管理 function", async ({ page }) => {
   await page.getByRole("link", { name: "プロジェクト設定" }).click()
   await page.getByRole("link", { name: "ユーザー管理" }).click()
@@ -55,11 +44,7 @@ test("Testing ユーザー管理 function", async ({ page }) => {
 test("Testing 分析対象ページ設定 function", async ({ page }) => {
   await page.getByRole("link", { name: "プロジェクト設定" }).click()
   await page.getByRole("link", { name: "分析対象ページ設定" }).click()
-  await page
-    .locator("div")
-    .filter({ hasText: /^選択してください$/ })
-    .nth(2)
-    .click()
+  await page.locator(".select__indicator").nth(0).click()
   await page.locator(".select__indicators").click()
   await page.locator(".select__option").nth(0).click()
   await page.locator(".select__indicators > div:nth-child(3)").click()
