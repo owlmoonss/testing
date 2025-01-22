@@ -1,7 +1,7 @@
 import { test, type Page } from "@playwright/test"
 import { baseURL } from "../../playwright.config"
 
-export function useAuthorization(fn: (page: Page) => Promise<void>) {
+export function useAuthorization() {
   test.beforeEach(async ({ page }) => {
     await page.goto(baseURL)
     await page.getByRole("link", { name: "ログイン" }).click()
@@ -12,7 +12,5 @@ export function useAuthorization(fn: (page: Page) => Promise<void>) {
     await page.locator("#sign-in-password").press("Enter")
 
     await page.waitForURL("**/statistics", { waitUntil: "domcontentloaded" })
-
-    await fn(page)
   })
 }

@@ -1,9 +1,7 @@
 import { test, expect } from "@playwright/test"
 import { useAuthorization } from "../utils/authorization"
-import { baseURL } from "../../playwright.config"
 
-useAuthorization(async () => {})
-
+useAuthorization()
 test("Testing project settings", async ({ page }) => {
   await expect(page).toHaveURL(/.*statistics/)
   await page.getByRole("link", { name: "プロジェクト設定" }).click()
