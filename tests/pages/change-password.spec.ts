@@ -13,9 +13,9 @@ test("Testing change password", async ({ page }) => {
     .locator("a")
     .click()
   await page.locator("#password").first().click()
-  await page.locator("#password").first().fill("Intern2024")
+  await page.locator("#password").first().fill("fwhfwh0902")
   await page.locator("#password").nth(1).click()
-  await page.locator("#password").nth(1).fill("Intern2024")
+  await page.locator("#password").nth(1).fill("fwhfwh0902")
   await page.getByRole("button", { name: "パスワードを更新" }).click()
   await page.getByText("プロフィールの更新に成功しました！").waitFor()
 
